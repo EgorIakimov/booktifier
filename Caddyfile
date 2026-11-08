@@ -1,0 +1,18 @@
+{
+  admin off
+}
+https://booktifier.duckdns.org:8443 {
+  tls {
+    issuer acme {
+      disable_tlsalpn_challenge
+    }
+  }
+  request_body {
+    max_size 100MB
+  }
+  header {
+    -Server
+    Referrer-Policy "no-referrer"
+  }
+  reverse_proxy app:8765
+}

@@ -1,0 +1,12 @@
+Booktifier
+Copyright 2026 Egor Iakimov
+
+Source code and documentation are licensed under Apache License 2.0.
+
+app/static/doodles.jpg is user-supplied reference artwork. Its original
+creator and license have not been established. It is excluded from the
+Apache license grant for the project's code and documentation. Obtain the
+necessary rights or replace this asset when redistributing the artwork.
+
+Book covers retrieved from Open Library retain their respective rights.
+The repository does not contain a collection of downloaded book covers.

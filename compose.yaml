@@ -1,0 +1,50 @@
+name: booktifier
+services:
+  app:
+    build: .
+    image: booktifier:local
+    restart: unless-stopped
+    environment:
+      PUBLIC_ORIGIN: https://booktifier.duckdns.org:8443
+    expose:
+      - "8765"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 256m
+    memswap_limit: 256m
+    cpus: 0.5
+    pids_limit: 48
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; r=urllib.request.Request('http://127.0.0.1:8765/',headers={'Host':'booktifier.duckdns.org:8443'}); urllib.request.urlopen(r,timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    logging:
+      driver: "none"
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "8443:8443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      app:
+        condition: service_healthy
+    mem_limit: 64m
+    memswap_limit: 64m
+    cpus: 0.25
+    pids_limit: 64
+    security_opt: [no-new-privileges:true]
+    logging:
+      driver: json-file
+      options:
+        max-size: 2m
+        max-file: "2"
+volumes:
+  caddy_data:
+  caddy_config:

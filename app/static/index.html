@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Booktifier — Книжная мастерская</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header><a href="/" class="brand"><span class="mark" aria-hidden="true">B</span> Booktifier</a><button id="settings" class="plain">Настройки</button></header>
+<main>
+  <section id="start">
+    <div class="intro">
+      <h1>Книжная<br><i>мастерская</i></h1>
+      <p>Выберите обложку, поправьте название и отправьте книгу на Kindle.</p>
+      <label for="openBook" class="primary">Выбрать EPUB<svg aria-hidden="true" viewBox="0 0 24 24" class="icon"><path d="M5 19 19 5 M6 5h13v13"/></svg></label>
+      <small>или перетащите книгу в окно</small>
+    </div>
+    <div id="shelf" aria-hidden="true"></div>
+  </section>
+  <input class="visually-hidden" type="file" id="openBook" accept=".epub,application/epub+zip">
+  <section id="editor" hidden>
+    <div class="row editor-heading"><h1>Редактор книги</h1><label for="openBook" class="plain">Открыть другую</label></div>
+    <div class="workspace">
+      <div class="book">
+        <div class="jacket"><div id="preview" aria-label="Предпросмотр обложки"></div></div>
+        <div class="fields">
+          <label for="title">Название книги</label><input id="title" dir="auto" maxlength="300">
+          <label for="authors">Авторы</label><textarea id="authors" dir="auto" rows="2" maxlength="600" aria-describedby="authorHint"></textarea>
+          <small id="authorHint">Каждый автор с новой строки</small>
+          <button class="plain" id="original">Вернуть исходную обложку</button>
+        </div>
+      </div>
+      <div class="choices">
+        <section><h2>Шаблоны обложек</h2><div id="templates" class="rail"></div></section>
+        <section>
+          <div class="row catalog-heading"><h2>Обложки из Open Library</h2><button type="button" class="info" aria-expanded="false" aria-controls="catalogHint" id="hintButton" aria-label="Об источнике обложек">?</button></div>
+          <p id="catalogHint" hidden>Open Library — открытый книжный каталог. Мы ищем по ISBN, названию и автору. У некоторых изданий в каталоге пока нет обложки.</p>
+          <p id="catalogStatus" role="status"></p><div id="online" class="rail"></div>
+        </section>
+        <section><h2>Своя обложка</h2>
+          <label for="upload" class="upload">Выбрать изображение <small>Перетащите или вставьте JPG, PNG или WebP</small></label>
+          <input class="visually-hidden" type="file" id="upload" accept="image/jpeg,image/png,image/webp">
+        </section>
+      </div>
+    </div>
+    <div class="actions"><button id="download" class="secondary">Скачать EPUB<svg aria-hidden="true" viewBox="0 0 24 24" class="icon"><path d="M12 3v14m-6-6 6 6 6-6M4 21h16"/></svg></button><button id="send" class="primary">Отправить на Kindle<svg aria-hidden="true" viewBox="0 0 24 24" class="icon"><path d="M5 19 19 5 M6 5h13v13"/></svg></button></div>
+  </section>
+  <p id="status" role="status"></p>
+</main>
+<dialog id="dialog" aria-labelledby="settingsTitle">
+    <div class="row"><h2 id="settingsTitle">Настройки</h2><button type="button" id="close" aria-label="Закрыть">×</button></div>
+    <div class="language-setting">
+      <label for="language">Язык</label>
+      <div class="select-wrap">
+        <select id="language"><option value="en" lang="en">English</option><option value="ru" lang="ru">Русский</option></select>
+        <svg aria-hidden="true" class="icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+    </div>
+  <form id="prefs">
+    <label for="kindle">Почта Kindle</label><input type="email" id="kindle" placeholder="имя@kindle.com" required>
+    <label for="sender">Почта отправителя</label><input type="email" id="sender" placeholder="имя@gmail.com" aria-describedby="providerHint" required>
+    <small id="providerHint">Для отправки поддерживается Gmail.</small>
+    <div id="credential" hidden>
+      <div class="password-label">
+        <label for="secret">Пароль приложения Google</label>
+        <button id="passwordHelp" type="button" aria-expanded="false" aria-controls="passwordGuide" aria-label="Как получить пароль приложения">?</button>
+          <div class="password-guide" id="passwordGuide" hidden>
+            <ol>
+              <li><a href="https://myaccount.google.com/apppasswords" target="_blank" rel="noopener noreferrer">Откройте пароли приложений Google</a> <span>и войдите в аккаунт отправителя.</span></li>
+              <li>Введите название Booktifier и нажмите «Создать».</li>
+              <li>Скопируйте пароль из 16 символов, вставьте в поле ниже и сохраните настройки почты.</li>
+            </ol>
+            <small>Для создания пароля нужна двухэтапная аутентификация Google.</small>
+          </div>
+
+      </div>
+      <input id="secret" type="password" autocomplete="new-password" aria-describedby="credentialHint">
+      <small id="credentialHint" role="status"></small>
+    </div>
+    <p class="storage-note">Настройки и пароль хранятся только в этом браузере. При отправке пароль передаётся серверу для подключения к Gmail.</p>
+    <p class="mail-note">Добавьте почту отправителя в список разрешённых адресов Amazon для Kindle.</p>
+    <p id="prefStatus" role="status"></p>
+    <button class="primary" id="savePrefs">Сохранить почту</button>
+  </form>
+</dialog>
+<script type="module" src="/app.js"></script>
+</body></html>

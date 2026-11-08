@@ -1,0 +1,5 @@
+.git
+*.epub
+**/__pycache__
+**/.DS_Store
+README.md

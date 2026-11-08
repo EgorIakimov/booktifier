@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+._*
+.env
+.env.*
+!.env.example
+*.epub
+*.pem
+*.key
+*.crt
+caddy_data/
+caddy_config/
