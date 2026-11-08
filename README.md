@@ -96,7 +96,7 @@ See [RELEASE_NOTES](RELEASE_NOTES.md).
 
 ## Authors
 
-- Egor Iakimov — [EgorIakimov](https://github.com/EgorIakimov)
+- Egor Iakimov - [EgorIakimov](https://github.com/EgorIakimov)
 
 ## Code of Conduct
 

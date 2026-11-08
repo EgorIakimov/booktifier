@@ -4,7 +4,7 @@ const english = new Map(Object.entries({
 
   'Сервис занят. Повторите через несколько секунд.':'The service is busy. Please try again in a few seconds.',
 
-  'Booktifier — Книжная мастерская':'Booktifier — Book workshop',
+  'Booktifier - Книжная мастерская':'Booktifier - Book workshop',
   'Книжная':'Book', 'мастерская':'workshop',
   'Выберите обложку, поправьте название и отправьте книгу на Kindle.':'Choose a cover, edit the title, and send your book to Kindle.',
   'Выбрать EPUB':'Choose an EPUB','или перетащите книгу в окно':'or drop your book here',
@@ -25,7 +25,7 @@ const english = new Map(Object.entries({
   'Для создания пароля нужна двухэтапная аутентификация Google.':'Your Google account needs 2-Step Verification to create app passwords.',
   'Сохранить':'Save','имя@kindle.com':'name@kindle.com','имя@gmail.com':'name@gmail.com',
   'Предпросмотр обложки':'Cover preview','Об источнике обложек':'About Open Library','Закрыть':'Close','Язык':'Language',
-  'Open Library — открытый книжный каталог. Мы ищем по ISBN, названию и автору. У некоторых изданий в каталоге пока нет обложки.':'Open Library is a public book catalog. We search by ISBN, title, and author. Some editions don’t have cover images.',
+  'Open Library - открытый книжный каталог. Мы ищем по ISBN, названию и автору. У некоторых изданий в каталоге пока нет обложки.':'Open Library is a public book catalog. We search by ISBN, title, and author. Some editions don’t have cover images.',
   'Тканевый переплёт':'Clothbound','Типографика':'Typography','Конструктивизм':'Constructivist','Гравюра':'Engraving','Классический титул':'Classic','Комикс':'Comic','Мультфильм':'Doodles',
   'Выбранный шаблон':'Selected design','Выбранная обложка':'Selected cover','Без обложки':'No cover',
   'Читаем EPUB…':'Reading EPUB…','Выберите EPUB до 50 МБ':'Choose an EPUB up to 50 MB',
